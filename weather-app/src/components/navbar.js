@@ -1,28 +1,44 @@
-import React from "react";
-import '@heroicons/react/outline';
+import React, { useState, useEffect } from "react";
 import NavbarContent from "./navbarContent";
-export default function WeekNav() {
-    return (
-        <div className="p-1 mx-20 px-10 bg-gray-500 bg-opacity-10 rounded-lg h-4/5">
-            <ul className="flex flex-nowrap justify-evenly border-b-2 border-gray-600 text-yellow-50 text-2xl">
-                <li>Today</li>
-                <li>Tuesday</li>
-                <li>Wednesday</li>
-                <li>Thursday</li>
-                <li>Friday</li>
-                <li>Saturday</li>
-                <li>Sunday</li>
-            </ul>
-            <div className="grid grid-cols-6">
-               <NavbarContent/>
-               <NavbarContent/>
-               <NavbarContent/>
-               <NavbarContent/>
-               <NavbarContent/>
-               <NavbarContent/>
-              
 
-            </div>
+export default function WeekNav({ forecastData }) {
+  const [selectedDay, setSelectedDay] = useState("");
+  const [daysOfWeek, setDaysOfWeek] = useState([]);
+
+  useEffect(() => {
+    const currentDay = new Date().getDay();
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const orderedDaysOfWeek = [...days.slice(currentDay, currentDay + 6)];
+    setDaysOfWeek(orderedDaysOfWeek);
+    setSelectedDay(orderedDaysOfWeek[0]);
+  }, []);
+
+  const handleDayClick = (day) => {
+    setSelectedDay(day);
+  };
+
+  const filteredDayData = forecastData.filter((data) => data.day === selectedDay);
+
+  return (
+    <div>
+      <div className="p-1 mx-20 px-10 py-10 pb-20 bg-gray-500 bg-opacity-10 rounded-lg h-4/5">
+        <ul className="flex flex-nowrap justify-evenly border-b border-gray-600 text-yellow-50 text-2xl ">
+          {daysOfWeek.map((day) => (
+            <li
+              key={day}
+              className={`cursor-pointer ${
+                selectedDay === day ? "border-b-2 border-yellow-50" : ""
+              } ${selectedDay === day ? "" : "text-gray-500"}`}
+              onClick={() => handleDayClick(day)}
+            >
+              {day}
+            </li>
+          ))}
+        </ul>
+        <div>
+          <NavbarContent dayData={filteredDayData} />
         </div>
-    )
+      </div>
+    </div>
+  );
 }
