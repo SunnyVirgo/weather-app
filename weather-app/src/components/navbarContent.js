@@ -1,5 +1,5 @@
 import React from "react";
-import WeatherIcon from "./weatherIcon";
+import WeathercontentIcon from "./weathercontenticons";
 
 export default function NavbarContent({ dayData }) {
   let data = null;
@@ -17,7 +17,7 @@ export default function NavbarContent({ dayData }) {
         <div className="grid grid-cols-6 gap-10">
          <div className="text-center">
             <div className="flex justify-center mt-3">
-              <WeatherIcon />
+              <WeathercontentIcon weather={data.weatherName} />
             </div>
             <div className="uppercase mt-3">
               <span className="text-yellow-50 text-2xl">Weather</span>
@@ -29,7 +29,7 @@ export default function NavbarContent({ dayData }) {
 
           <div className="text-center">
             <div className="flex justify-center mt-3">
-              <WeatherIcon />
+              <WeathercontentIcon weather={data.weatherName} />
             </div>
             <div className="uppercase mt-3">
               <span className="text-yellow-50 text-2xl">description</span>
@@ -42,19 +42,19 @@ export default function NavbarContent({ dayData }) {
 
           <div className="text-center">
             <div className="flex justify-center mt-3">
-              <WeatherIcon />
+              <WeathercontentIcon weather={data.weatherName} />
             </div>
             <div className="uppercase mt-3">
               <span className="text-yellow-50 text-2xl">Temperature</span>
             </div>
             <div className="mt-2">
-              <span className="text-yellow-50 text-xl">{data.temperature}&deg;</span>
+              <span className="text-yellow-50 text-xl">{data.temperature} &deg;C</span>
             </div>
           </div>
 
           <div className="text-center">
             <div className="flex justify-center mt-3">
-              <WeatherIcon />
+              <WeathercontentIcon weather={data.weatherName} />
             </div>
             <div className="uppercase mt-3">
               <span className="text-yellow-50 text-2xl">Humidity</span>
@@ -66,7 +66,7 @@ export default function NavbarContent({ dayData }) {
 
           <div className="text-center">
             <div className="flex justify-center mt-3">
-              <WeatherIcon />
+            <WeathercontentIcon weather={data.weatherName} />
             </div>
             <div className="uppercase mt-3">
               <span className="text-yellow-50 text-2xl">Pressure</span>
@@ -78,7 +78,7 @@ export default function NavbarContent({ dayData }) {
 
           <div className="text-center">
             <div className="flex justify-center mt-3">
-              <WeatherIcon />
+              <WeathercontentIcon weather={data.weatherName} />
             </div>
             <div className="uppercase mt-3">
               <span className="text-yellow-50 text-2xl">Wind Speed</span>

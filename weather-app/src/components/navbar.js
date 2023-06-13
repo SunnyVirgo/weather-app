@@ -8,7 +8,7 @@ export default function WeekNav({ forecastData }) {
   useEffect(() => {
     const currentDay = new Date().getDay();
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const orderedDaysOfWeek = [...days.slice(currentDay, currentDay + 6)];
+    const orderedDaysOfWeek = [...days.slice(currentDay), ...days.slice(0, currentDay)];
     setDaysOfWeek(orderedDaysOfWeek);
     setSelectedDay(orderedDaysOfWeek[0]);
   }, []);
@@ -21,7 +21,7 @@ export default function WeekNav({ forecastData }) {
 
   return (
     <div>
-      <div className="p-1 mx-20 px-10 py-10 pb-20 bg-gray-500 bg-opacity-10 rounded-lg h-4/5">
+      <div className="p-1 mx-20 px-10 bg-gray-500 bg-opacity-10 rounded-lg h-4/5">
         <ul className="flex flex-nowrap justify-evenly border-b border-gray-600 text-yellow-50 text-2xl ">
           {daysOfWeek.map((day) => (
             <li

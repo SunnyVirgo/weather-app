@@ -1,9 +1,9 @@
 
 .app {
-background-image: url('./images/bg.jpg');
 background-size: cover;
 background-position: center;
-
+position: fixed;
+overflow: unset;
 
 
   width: 100%;
@@ -11,4 +11,5 @@ background-position: center;
 
   /* Additional styles for the component */
 }
+
   
